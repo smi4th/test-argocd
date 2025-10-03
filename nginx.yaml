@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "my-nginx"
+  name: "my-super-nginx"
   namespace: default
   labels:
-    app: "my-nginx"
+    app: "my-super-nginx"
 spec:
   containers:
-  - name: my-nginx
+  - name: my-super-nginx
     image: "nginx"
     ports:
     - containerPort: 80
