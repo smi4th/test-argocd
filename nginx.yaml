@@ -1,16 +1,28 @@
-# https://kubernetes.io/docs/concepts/workloads/pods/
-apiVersion: v1
-kind: Pod
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "my-super-nginx"
+  name: my-nginx
   namespace: default
   labels:
-    app: "my-super-nginx"
+    app: my-nginx
 spec:
-  containers:
-  - name: my-super-nginx
-    image: "nginx"
-    ports:
-    - containerPort: 80
-      name: http
-  restartPolicy: Always
+  selector:
+    matchLabels:
+      app: my-nginx
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+      - name: my-nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: my-nginx
+      restartPolicy: Always
+---
+
