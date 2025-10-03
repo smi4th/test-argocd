@@ -5,6 +5,4 @@ metadata:
   name: myconfig
   namespace: default
 data:
-  key: value
----
-
+  env: DEV
