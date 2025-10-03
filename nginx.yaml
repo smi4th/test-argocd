@@ -1,0 +1,16 @@
+# https://kubernetes.io/docs/concepts/workloads/pods/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "my-nginx"
+  namespace: default
+  labels:
+    app: "my-nginx"
+spec:
+  containers:
+  - name: my-nginx
+    image: "nginx"
+    ports:
+    - containerPort: 80
+      name: http
+  restartPolicy: Always
